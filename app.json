@@ -1,0 +1,12 @@
+{
+  "name": "QspTrainer",
+  "displayName": "QspTrainer",
+  "expo": {
+    "name": "QspTrainer",
+    "slug": "QspTrainer",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
