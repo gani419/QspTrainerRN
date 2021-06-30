@@ -21,7 +21,7 @@ const QRCode = () => {
                 source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Allenton_Hippo_QR_Code.jpg' }}
                 style={{ width: 200, height: 200, alignItems: 'flex-end' }}
             />
-            <Button title="Back"
+            <Button title="OK"
             onPress={showDialog} 
             />
         </View>
