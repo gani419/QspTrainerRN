@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet,Alert } from 'react-native';
 import {
     useTheme,
     Avatar,
@@ -15,14 +15,18 @@ import {
     DrawerContentScrollView,
     DrawerItem
 } from '@react-navigation/drawer';
+import AsyncStorage from "@react-native-community/async-storage";
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
 
 function Sidebar({...props}) {
 
     const paperTheme = useTheme();
+    const [userName,setUserName] = React.useState('')
 
+    AsyncStorage.getItem("username").then(username => {
+        setUserName(username)
+    }).done();
 
     return(
         <View style={{flex:1}}>
@@ -37,7 +41,7 @@ function Sidebar({...props}) {
                                 size={50}
                             />
                             <View style={{marginLeft:15, flexDirection:'column'}}>
-                                <Title style={styles.title}>John Doe</Title>
+                                <Title style={styles.title}>{userName}</Title>
                                 <Caption style={styles.caption}>@j_doe</Caption>
                             </View>
                         </View>
@@ -101,7 +105,19 @@ function Sidebar({...props}) {
                         />
                     )}
                     label="Sign Out"
-                    onPress={() => {signOut()}}
+                    onPress={() => {
+                        Alert.alert(
+                            'Hello',
+                            'Are you Sure that you want to logout ?',
+                            [
+                            {text:'Yes', onPress: () => {
+                                AsyncStorage.clear()
+                                props.navigation.replace('LoginScreen')
+                            }},
+                            {text:'No', onPress: () => console.log('No')}
+                            ]
+                        );
+                    }}
                 />
             </Drawer.Section>
         </View>

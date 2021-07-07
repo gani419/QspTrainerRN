@@ -32,16 +32,16 @@ import Icon from 'react-native-vector-icons/Ionicons';
                                 />
                             )}
                             color="black"
-                            onPress={() => { this.props.navigation.openDrawer() }}
+                            onPress={() => { this.props.navigation.navigate('QRCode') }}
                         />
                     </View>
                    
                 </Appbar>
-                <Text>Home Screen</Text>
+                {/* <Text>Home Screen</Text>
                 <Button
                     title="Show QR Code"
                     onPress={() =>  this.props.navigation.navigate('QRCode')}
-                />
+                /> */}
         </View>
 
 
@@ -49,7 +49,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
     }  
 }  
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({ 
     bottom: {
         position: 'absolute',
         backgroundColor:'white',

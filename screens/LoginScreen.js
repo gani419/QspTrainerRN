@@ -157,16 +157,16 @@ function callApi(username,password,self){
 
 
 
-  axios.post('https://reqres.in/api/users', {
-    name: username,
-    job: password
+  axios.post('https://qsaas.qspiders.com/manager/login/', {
+    username: username,
+    password: password
   })
   .then((response) => {
     self.setState({showTheThing: false}) 
     // navigate('HomeScreen')
     AsyncStorage.setItem('username',username)
     self.props.navigation.replace('Home')
-    ToastAndroid.show(response.data.name, ToastAndroid.SHORT)
+    ToastAndroid.show(response.data.user.username, ToastAndroid.SHORT)
     console.log(response);
   }, (error) => {
     ToastAndroid.show('error', ToastAndroid.SHORT)
